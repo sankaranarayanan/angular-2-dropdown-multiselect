@@ -33,7 +33,7 @@
     <li *ngIf="renderItems && !renderFilteredOptions.length" class="dropdown-item empty">{{ texts.searchEmptyResult }}</li>
     <li class="dropdown-item" *ngFor="let option of renderFilteredOptions" (click)="setSelected($event, option)" [ngStyle]="getItemStyle(option)"
       [ngClass]="option.classes" [class.dropdown-header]="option.isLabel">
-        <a *ngIf="!option.isLabel; else label" href="javascript:;" role="menuitem" tabindex="-1" [style.padding-left]="this.parents.length>0&&this.parents.indexOf(option.id)<0&&'30px'"
+        <a *ngIf="!option.isLabel" href="javascript:;" role="menuitem" tabindex="-1" [style.padding-left]="this.parents.length>0&&this.parents.indexOf(option.id)<0&&'30px'"
           [ngStyle]="getItemStyleSelectionDisabled()">
           <ng-container [ngSwitch]="settings.checkedStyle">
             <input *ngSwitchCase="'checkboxes'" type="checkbox" [checked]="isSelected(option)" (click)="preventCheckboxCheck($event, option)"
@@ -47,7 +47,7 @@
             {{ option.name }}
           </span>
         </a>
-        <ng-template #label>{{ option.name }}</ng-template>
+        <!-- <ng-template #label>{{ option.name }}</ng-template> -->
     </li>
   </ul>
 </div>
